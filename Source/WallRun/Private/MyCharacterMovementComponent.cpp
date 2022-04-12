@@ -28,7 +28,7 @@ bool UMyCharacterMovementComponent::StartWallRun()
 		SetMovementMode(EMovementMode::MOVE_Custom, ECustomMovementMode::CMOVE_WallRunning);
 		return true;
 	}
-
+	
 	return false;
 }
 
@@ -237,6 +237,7 @@ void UMyCharacterMovementComponent::UpdateFromCompressedFlags(uint8 Flags)
 
 void UMyCharacterMovementComponent::OnMovementModeChanged(EMovementMode PreviousMovementMode, uint8 PreviousCustomMode)
 {
+	Super::OnMovementModeChanged(PreviousMovementMode, PreviousCustomMode);
 	if(MovementMode == MOVE_Custom)
 	{
 		if(CustomMovementMode == ECustomMovementMode::CMOVE_WallRunning)
@@ -370,6 +371,7 @@ void UMyCharacterMovementComponent::PhysWallRunning(float deltaTime, int32 Itera
 	const FVector Adjusted = Velocity * deltaTime;
 	FHitResult Hit(1.f);
 	SafeMoveUpdatedComponent(Adjusted, UpdatedComponent->GetComponentQuat(), true, Hit);
+
 }
 
 void FMySavedMove::Clear()

@@ -9,8 +9,9 @@
 UENUM(BlueprintType)
 enum ECustomMovementMode
 {
+	CMOVE_PlaceHolder UMETA(DisplayName = "PlaceHolder"),
 	CMOVE_WallRunning UMETA(DisplayName = "WallRunning"),
-	CMOVE_PlaceHolder UMETA(DisplayName = "PlaceHolder")
+	CMOVE_Sliding UMETA(DisplayName = "Sliding")
 };
 
 //The side of the character the wall is on
